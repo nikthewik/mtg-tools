@@ -1,0 +1,215 @@
+/* CSS RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* APP */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  background-image: linear-gradient(
+    to bottom,
+    #150d17,
+    #31518c,
+    #2f82a8,
+    #67aeb8,
+    #8ccfbc
+  );
+}
+
+/* PLAYER */
+
+.player-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 50svh;
+  width: 100svw;
+  border-top: #ffffff 1px solid;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.player2 {
+  rotate: 180deg;
+}
+
+/* MODES */
+
+.mana-counter,
+.dice-container {
+  flex-direction: column;
+}
+
+.mana-container,
+.dice-container,
+.life-container {
+  height: 100%;
+}
+
+/* LIFE */
+.mana-counter {
+  gap: 0.5rem;
+}
+
+.mana-counter,
+.life-counter {
+  position: relative;
+  width: 40svw;
+  height: 100%;
+}
+
+.life-modifier {
+  position: absolute;
+  top: 13%;
+  font-size: 2rem;
+}
+
+/* BUTTONS */
+
+.btn {
+  font-size: 3rem;
+  background: transparent;
+  border: none;
+}
+
+.btn-abs {
+  position: absolute;
+  width: 30%;
+  height: calc(80% - env(safe-area-inset-bottom));
+}
+
+.btn-left {
+  left: 0;
+}
+
+.btn-right {
+  right: 0;
+}
+
+.btn-roll {
+  position: absolute;
+  width: 100svw;
+  height: calc(80% - env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
+}
+
+.btn-mana {
+  width: 33svw;
+  height: 5svh;
+}
+
+.btn-active {
+  background-color: #ffffff15;
+  border-top: #ffffff 1px solid;
+}
+
+.btn-menu {
+  height: 100%;
+  width: 20svw;
+}
+
+.btn-tap {
+  -webkit-tap-highlight-color: #ffffff15;
+}
+
+.btn-tap-none {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 23%;
+  width: 100svw;
+}
+
+.menu-icon {
+  width: 2.5rem;
+  filter: drop-shadow(#7eca9c 0px 0px 6px);
+}
+
+/* UTILITY CLASSES */
+
+.flex-cc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.n-text {
+  font-size: 8rem;
+}
+
+.s-text {
+  font-size: 7rem;
+}
+
+.xxs-text {
+  font-size: 1.5rem;
+}
+
+.xxxs-text {
+  font-size: 1.2rem;
+}
+
+.dice-text {
+  align-self: end;
+  padding-bottom: 5svh;
+}
+
+.tip-text {
+  position: absolute;
+  top: 19%;
+}
+
+.text {
+  color: #ffffff;
+  text-shadow: #7eca9c 0px 0px 6px;
+}
+
+.dead {
+  color: #b9fda5;
+  text-shadow: #7eca9c 0px 0px 6px;
+}
+
+.bg-u {
+  background-color: #64bfff;
+}
+
+.bg-b {
+  background-color: #000000;
+}
+
+.bg-w {
+  background-color: #ffffff;
+}
+
+.bg-r {
+  background-color: #ff0000;
+}
+
+.bg-g {
+  background-color: #218c4c;
+}
