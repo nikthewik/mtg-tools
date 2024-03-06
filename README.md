@@ -4,6 +4,8 @@ A Progressive Web App I developed to practice the basics of React and explore th
 
 MTG Tools is a set of tools that can be used to play Magic The Gathering in the Pauper format: you can keep track of **mana**, **life points**, **poison counters**, **initiative** and **monarch** or you can simply **roll a dice** to see who starts playing the game. 😁
 
+![MTG Tools preview](https://raw.githubusercontent.com/nikthewik/mtg-tools/main/src/assets/img/preview-mtg-tools.png)
+
 ## Table of Contents
 
 - [Overview](#overview)
