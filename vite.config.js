@@ -8,12 +8,13 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      devOptions: {
+        enabled: true,
+      },
       injectRegister: "auto",
       workbox: {
         cleanupOutdatedCaches: true,
-        globPatterns: [
-          "**/*.{html,js,css,ico,png,jpg,svg,json,webmanifest,txt,woff,woff2}",
-        ],
+        globPatterns: ["**/*.{html,js,css,ico,png,svg,json,webmanifest,txt}"],
       },
       manifest: {
         name: "MTG Tools",

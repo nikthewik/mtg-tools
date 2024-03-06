@@ -52,6 +52,7 @@ body {
   rotate: 180deg;
 }
 
+.counter,
 .dice-container {
   height: clamp(14rem, 25vw, 66%);
 }
@@ -67,7 +68,7 @@ body {
 
 .modifier {
   font-size: clamp(2rem, 4vw, 2.7rem);
-  top: 13%;
+  top: -3%;
 }
 
 .menu {

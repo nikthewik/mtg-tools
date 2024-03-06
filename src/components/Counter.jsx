@@ -5,7 +5,7 @@ export default function Counter({ type, counter, modifier, isVisible }) {
 
   return (
     <div
-      className={`counter h-100 flex center ${
+      className={`counter flex center relative ${
         type === "life" && isLife
           ? isLife && "dead"
           : type === "poison" && isPoison
