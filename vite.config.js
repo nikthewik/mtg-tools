@@ -14,7 +14,9 @@ export default defineConfig({
       injectRegister: "auto",
       workbox: {
         cleanupOutdatedCaches: true,
-        globPatterns: ["**/*.{html,js,css,ico,png,svg,json,webmanifest,txt}"],
+        globPatterns: [
+          "**/*.{html,js,css,ico,png,svg,json,webmanifest,toml,txt}",
+        ],
       },
       manifest: {
         name: "MTG Tools",
@@ -23,33 +25,34 @@ export default defineConfig({
         theme_color: "#150d17",
         background_color: "#150d17",
         start_url: "./index.html",
+        orientation: "portrait",
         display: "standalone",
         icons: [
           {
-            src: "/src/assets/img/pwa-192x192.png",
+            src: "/pwa/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/src/assets/img/pwa-512x512.png",
+            src: "/pwa/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/src/assets/img/pwa-maskable-192x192.png",
+            src: "/pwa/pwa-maskable-192x192.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "maskable",
           },
           {
-            src: "/src/assets/img/pwa-maskable-512x512.png",
+            src: "/pwa/pwa-maskable-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
           },
           {
-            src: "/src/assets/img/pwa-maskable-1024x1024.png",
+            src: "/pwa/pwa-maskable-1024x1024.png",
             sizes: "1024x1024",
             type: "image/png",
             purpose: "maskable",
