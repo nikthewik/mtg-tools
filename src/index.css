@@ -272,3 +272,93 @@ body {
 }
 
 /* /////////////////////////////////////////////////////////////////// */
+
+/* MEDIA QUERIES */
+
+/* LANDSCAPE - DISPLAY NONE */
+/* MOBILE AND SOME TABLETS */
+@media only screen and (any-pointer: coarse) and (max-width: 1000px) and (orientation: landscape) {
+  .app {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .app::before {
+    content: "UNTAP your device :D";
+    font-size: clamp(3rem, 7vw, 5rem);
+    color: #ffffff;
+  }
+
+  .player-container {
+    display: none;
+  }
+}
+
+/* LANDSCAPE */
+/* SCREENS WITH LOW HEIGHT LIKE NEST HUB */
+@media only screen and (any-pointer: coarse) and (width >= 1000px) and (height >= 580px) and (height <= 749px) and (orientation: landscape) {
+  .xl-text,
+  .l-text {
+    font-size: 6.5rem;
+  }
+
+  .xxs-text {
+    font-size: 1.5rem;
+  }
+
+  .dice-container {
+    height: 11.5rem;
+  }
+
+  .dice-icon {
+    width: 7rem;
+  }
+
+  .modifier {
+    font-size: 1.5rem;
+    top: 12%;
+  }
+}
+
+/* BIG TABLETS AND CONVERTIBLE PCs */
+@media only screen and (any-pointer: coarse) and (width >= 1000px) and (height >= 750px) and (height <= 950px) and (orientation: landscape) {
+  .xl-text,
+  .l-text {
+    font-size: 7rem;
+  }
+
+  .dice-icon {
+    width: 8rem;
+  }
+
+  .modifier {
+    font-size: 2rem;
+    top: 0%;
+  }
+}
+
+/* PORTRAIT */
+/* SMALL SCREENS LIKE IPHONE SE AND GALAXY FOLD */
+@media only screen and (height <= 670px) and (orientation: portrait) {
+  .xl-text,
+  .l-text {
+    font-size: 6.5rem;
+  }
+
+  .xxs-text {
+    font-size: 1.5rem;
+  }
+
+  .dice-container {
+    height: 11.5rem;
+  }
+
+  .dice-icon {
+    width: 7rem;
+  }
+
+  .modifier {
+    font-size: 1.5rem;
+    top: 10%;
+  }
+}
