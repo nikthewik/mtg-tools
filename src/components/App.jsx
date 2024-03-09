@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Player from "./Player";
 
 export default function App() {
@@ -7,6 +7,29 @@ export default function App() {
 
   const [initiativeP1, setInitiativeP1] = useState(false);
   const [initiativeP2, setInitiativeP2] = useState(false);
+
+  useEffect(() => {
+    if ("wakeLock" in navigator) {
+      let wakeLock = null;
+
+      const requestWakeLock = async () => {
+        try {
+          wakeLock = await navigator.wakeLock.request("screen");
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      requestWakeLock();
+
+      return () => {
+        if (wakeLock !== null) {
+          wakeLock.release();
+          setMonarchP1(true);
+        }
+      };
+    }
+  });
 
   function onMonarchP1() {
     setMonarchP1(true);
