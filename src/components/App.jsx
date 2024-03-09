@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Player from "./Player";
 
 export default function App() {
@@ -7,36 +7,6 @@ export default function App() {
 
   const [initiativeP1, setInitiativeP1] = useState(false);
   const [initiativeP2, setInitiativeP2] = useState(false);
-
-  useEffect(() => {
-    let wakeLock = null;
-
-    const requestWakeLock = async () => {
-      try {
-        wakeLock = await navigator.wakeLock.request("screen");
-      } catch (err) {
-        console.log("Impossibile richiedere il wake lock:", err);
-      }
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible" && wakeLock !== null) {
-        wakeLock.release();
-        wakeLock = null;
-      } else if (document.visibilityState === "hidden" && wakeLock === null) {
-        requestWakeLock();
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      if (wakeLock !== null) {
-        wakeLock.release();
-      }
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
 
   function onMonarchP1() {
     setMonarchP1(true);
