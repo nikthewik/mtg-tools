@@ -9,27 +9,34 @@ export default function App() {
   const [initiativeP2, setInitiativeP2] = useState(false);
 
   useEffect(() => {
-    if ("wakeLock" in navigator) {
-      let wakeLock = null;
+    let wakeLock = null;
 
-      const requestWakeLock = async () => {
-        try {
-          wakeLock = await navigator.wakeLock.request("screen");
-        } catch (err) {
-          console.log(err);
-        }
-      };
+    const requestWakeLock = async () => {
+      try {
+        wakeLock = await navigator.wakeLock.request("screen");
+      } catch (err) {
+        console.log("Impossibile richiedere il wake lock:", err);
+      }
+    };
 
-      requestWakeLock();
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible" && wakeLock !== null) {
+        wakeLock.release();
+        wakeLock = null;
+      } else if (document.visibilityState === "hidden" && wakeLock === null) {
+        requestWakeLock();
+      }
+    };
 
-      return () => {
-        if (wakeLock !== null) {
-          wakeLock.release();
-          setMonarchP1(true);
-        }
-      };
-    }
-  });
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      if (wakeLock !== null) {
+        wakeLock.release();
+      }
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
 
   function onMonarchP1() {
     setMonarchP1(true);
