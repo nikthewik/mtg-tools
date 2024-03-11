@@ -11,17 +11,21 @@ export default function App() {
   const [screenLock, setScreenLock] = useState(null);
   let visibility = document.visibilityState;
 
-  useEffect(() => {
-    async function requestWakeLock() {
-      if ("wakeLock" in navigator) {
-        try {
-          setScreenLock(await navigator.wakeLock.request("screen"));
-        } catch (err) {
-          console.log(err);
-        }
+  async function requestWakeLock() {
+    if ("wakeLock" in navigator) {
+      try {
+        setScreenLock(await navigator.wakeLock.request("screen"));
+      } catch (err) {
+        console.log(err);
       }
     }
+  }
 
+  useEffect(() => {
+    requestWakeLock();
+  }, []);
+
+  useEffect(() => {
     function releaseWakeLock() {
       if (screenLock !== null) {
         screenLock.release();
