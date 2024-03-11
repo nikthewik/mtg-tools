@@ -11,32 +11,39 @@ export default function App() {
   useEffect(() => {
     let wakeLock = null;
 
-    const requestWakeLock = async () => {
-      try {
-        wakeLock = await navigator.wakeLock.request("screen");
-      } catch (err) {
-        console.log(err);
+    async function requestWakeLock() {
+      if ("wakeLock" in navigator) {
+        try {
+          wakeLock = await navigator.wakeLock.request("screen");
+        } catch (err) {
+          console.log(err);
+        }
       }
-    };
+    }
+
+    function releaseWakeLock() {
+      if (wakeLock !== null) {
+        wakeLock.release();
+        wakeLock = null;
+      }
+    }
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        if (!wakeLock) requestWakeLock();
+      if (wakeLock !== null && document.visibilityState === "visible") {
+        requestWakeLock();
       } else {
-        if (wakeLock) {
-          wakeLock.release();
-          wakeLock = null;
-        }
+        releaseWakeLock();
       }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
+    requestWakeLock();
 
     return () => {
-      if (wakeLock) wakeLock.release();
+      releaseWakeLock();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []);
+  });
 
   function onMonarchP1() {
     setMonarchP1(true);
