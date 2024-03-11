@@ -28,22 +28,16 @@ export default function App() {
       }
     }
 
-    const handleVisibilityChange = () => {
-      if (screenLock !== null && document.visibilityState === "visible") {
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") {
         requestWakeLock();
       } else {
         releaseWakeLock();
       }
-    };
+    }
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    requestWakeLock();
-
-    return () => {
-      releaseWakeLock();
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [screenLock]);
+  });
 
   function onMonarchP1() {
     setMonarchP1(true);
