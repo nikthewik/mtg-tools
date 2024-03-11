@@ -9,6 +9,7 @@ export default function App() {
   const [initiativeP2, setInitiativeP2] = useState(false);
 
   const [screenLock, setScreenLock] = useState(null);
+  let visibility = document.visibilityState;
 
   useEffect(() => {
     async function requestWakeLock() {
@@ -29,15 +30,16 @@ export default function App() {
     }
 
     function handleVisibilityChange() {
-      if (document.visibilityState === "visible") {
+      if (visibility === "visible") {
         requestWakeLock();
-      } else {
+      }
+      if (visibility === "hidden") {
         releaseWakeLock();
       }
     }
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-  });
+  }, [screenLock, visibility]);
 
   function onMonarchP1() {
     setMonarchP1(true);
