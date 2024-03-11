@@ -39,7 +39,7 @@ export default function Player({
     return () => {
       clearTimeout(timeoutId);
     };
-  });
+  }, [modifier]);
 
   function resetDice() {
     setDice(1);

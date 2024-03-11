@@ -8,13 +8,13 @@ export default function App() {
   const [initiativeP1, setInitiativeP1] = useState(false);
   const [initiativeP2, setInitiativeP2] = useState(false);
 
-  useEffect(() => {
-    let wakeLock = null;
+  const [screenLock, setScreenLock] = useState(null);
 
+  useEffect(() => {
     async function requestWakeLock() {
       if ("wakeLock" in navigator) {
         try {
-          wakeLock = await navigator.wakeLock.request("screen");
+          setScreenLock(await navigator.wakeLock.request("screen"));
         } catch (err) {
           console.log(err);
         }
@@ -22,14 +22,14 @@ export default function App() {
     }
 
     function releaseWakeLock() {
-      if (wakeLock !== null) {
-        wakeLock.release();
-        wakeLock = null;
+      if (screenLock !== null) {
+        screenLock.release();
+        setScreenLock(null);
       }
     }
 
     const handleVisibilityChange = () => {
-      if (wakeLock !== null && document.visibilityState === "visible") {
+      if (screenLock !== null && document.visibilityState === "visible") {
         requestWakeLock();
       } else {
         releaseWakeLock();
@@ -43,7 +43,7 @@ export default function App() {
       releaseWakeLock();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  });
+  }, [screenLock]);
 
   function onMonarchP1() {
     setMonarchP1(true);
